@@ -1,5 +1,5 @@
 {
-  "name": "09-auth",
+  "name": "rental-car",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,17 +9,17 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@tanstack/react-query": "^5.90.20",
-    "@tanstack/react-query-devtools": "^5.91.3",
-    "axios": "^1.13.5",
-    "cookie": "^1.1.1",
+    "@tanstack/react-query": "^5.62.11",
+    "@tanstack/react-query-devtools": "^5.62.11",
+    "axios": "^1.16.0",
+    "clsx": "^2.1.1",
+    "formik": "^2.4.9",
     "modern-normalize": "^3.0.1",
-    "next": "16.1.6",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
-    "react-paginate": "^8.3.0",
-    "use-debounce": "^10.1.0",
-    "zustand": "^5.0.11"
+    "next": "^14.2.20",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-hot-toast": "^2.5.1",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@types/node": "^20",

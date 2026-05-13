@@ -1,60 +1,32 @@
-import "modern-normalize/modern-normalize.css";
-import "@/app/globals.css";
-
-import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
-
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
-import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
-import AuthProvider from "@/components/AuthProvider/AuthProvider";
-
-const OG_IMAGE_URL =
-  "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-
-const roboto = Roboto({
-  weight: ["400", "500", "700"],
-  subsets: ["latin", "cyrillic"],
-  variable: "--font-roboto",
-  display: "swap",
-});
+import type { Metadata } from 'next';
+import Header from '@/components/Header/Header';
+import Providers from '@/components/Providers/Providers';
+import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
   title: {
-    default: "NoteHub",
-    template: "%s | NoteHub",
+    default: 'RentalCar — Car Rental Service',
+    template: '%s | RentalCar'
   },
-  description: "NoteHub — a simple notes manager built with Next.js.",
-  alternates: { canonical: "/" },
+  description: 'Reliable and budget-friendly rental cars for any journey.',
+  metadataBase: new URL('https://rental-car-next.vercel.app'),
   openGraph: {
-    title: "NoteHub",
-    description: "NoteHub — a simple notes manager built with Next.js.",
-    url: "/",
-    images: [OG_IMAGE_URL],
-  },
+    title: 'RentalCar — Car Rental Service',
+    description: 'Find and book a rental car for your next journey.',
+    url: '/',
+    siteName: 'RentalCar',
+    type: 'website'
+  }
 };
 
-export default function RootLayout({
-  children,
-  modal,
-}: {
-  children: React.ReactNode;
-  modal: React.ReactNode;
-}) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={roboto.variable}>
-        <TanStackProvider>
-          <AuthProvider>
-            <Header />
-            {children}
-            {modal}
-            <Footer />
-          </AuthProvider>
-        </TanStackProvider>
+      <body>
+        <Providers>
+          <Header />
+          {children}
+        </Providers>
       </body>
     </html>
   );
