@@ -17,7 +17,7 @@ export default function DetailsSections({ car }: { car: Car }) {
           <span className={css.id}>Id: {car.id.slice(0, 4)}</span>
         </div>
         <p className={css.meta}>⌖ {getCityCountry(car.address)} <span>Mileage: {formatMileage(car.mileage)} km</span></p>
-        <p className={css.price}>{car.rentalPrice}</p>
+        <p className={css.price}>${car.rentalPrice}</p>
         <p className={css.description}>{car.description}</p>
       </section>
 

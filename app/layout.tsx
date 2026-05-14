@@ -1,7 +1,15 @@
 import type { Metadata } from 'next';
+import { Manrope } from "next/font/google";
 import Header from '@/components/Header/Header';
 import Providers from '@/components/Providers/Providers';
 import './globals.css';
+
+const manrope = Manrope({
+  subsets: ['latin', 'cyrillic'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-manrope',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: {
@@ -22,7 +30,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={manrope.variable}>
         <Providers>
           <Header />
           {children}

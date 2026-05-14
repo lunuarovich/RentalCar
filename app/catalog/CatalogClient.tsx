@@ -27,12 +27,36 @@ export default function CatalogClient() {
     maxMileage: sanitizeMileage(filters.maxMileage) || undefined
   }), [filters]);
 
-  const { data, isLoading, isError, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
-    queryKey: ['cars', queryParams],
-    queryFn: ({ pageParam }) => getCars({ page: pageParam, limit: LIMIT, ...queryParams }),
-    initialPageParam: 1,
-    getNextPageParam: lastPage => lastPage.page < lastPage.totalPages ? lastPage.page + 1 : undefined
-  });
+  const {
+  data,
+  isLoading,
+  isError,
+  fetchNextPage,
+  hasNextPage,
+  isFetchingNextPage,
+} = useInfiniteQuery({
+  queryKey: ['cars', queryParams],
+  queryFn: ({ pageParam }) =>
+    getCars({
+      page: pageParam,
+      limit: LIMIT,
+      ...queryParams,
+    }),
+  initialPageParam: 1,
+  getNextPageParam: (lastPage, allPages) => {
+    const loadedCars = allPages.flatMap(page => page.cars).length;
+
+    if (loadedCars >= lastPage.totalCars) {
+      return undefined;
+    }
+
+    if (lastPage.cars.length < LIMIT) {
+      return undefined;
+    }
+
+    return allPages.length + 1;
+  },
+});
 
   const cars = data?.pages.flatMap(page => page.cars) ?? [];
 
