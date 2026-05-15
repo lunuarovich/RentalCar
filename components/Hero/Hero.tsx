@@ -10,8 +10,9 @@ export default function Hero() {
         src="/HeroCar.jpg"
         alt=""
         fill
-        priority
         sizes="100vw"
+        loading="eager"
+        fetchPriority="high"
       />
       <div className={css.overlay} />
       <div className={css.content}>
