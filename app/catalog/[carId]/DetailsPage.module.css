@@ -4,7 +4,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: 640px 1fr;
+  grid-template-columns: 1fr;
   gap: 72px;
   align-items: start;
 }
@@ -27,11 +27,11 @@
   padding: 96px 0;
   text-align: center;
   color: var(--color-muted);
-  font-size: 20px;
+  font-size: var(--font-lg);
 }
 
-@media (max-width: 1100px) {
+@media (min-width: 1440px) {
   .grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 640px 1fr;
   }
 }

@@ -1,16 +1,18 @@
-import type { Metadata } from 'next';
-import Image from 'next/image';
-import Container from '@/components/Container/Container';
-import RentalForm from '@/components/RentalForm/RentalForm';
-import DetailsSections from '@/components/DetailsSections/DetailsSections';
-import { getCarById } from '@/lib/api';
-import css from './DetailsPage.module.css';
+import type { Metadata } from "next";
+import Image from "next/image";
+import Container from "@/components/Container/Container";
+import RentalForm from "@/components/RentalForm/RentalForm";
+import DetailsSections from "@/components/DetailsSections/DetailsSections";
+import { getCarById } from "@/lib/api";
+import css from "./DetailsPage.module.css";
 
 interface DetailsPageProps {
   params: Promise<{ carId: string }>;
 }
 
-export async function generateMetadata({ params }: DetailsPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: DetailsPageProps): Promise<Metadata> {
   const { carId } = await params;
   try {
     const car = await getCarById(carId);
@@ -21,11 +23,11 @@ export async function generateMetadata({ params }: DetailsPageProps): Promise<Me
       openGraph: {
         title: `${car.brand} ${car.model}, ${car.year}`,
         description: car.description,
-        images: [{ url: car.img }]
-      }
+        images: [{ url: car.img }],
+      },
     };
   } catch {
-    return { title: 'Car details' };
+    return { title: "Car details" };
   }
 }
 
@@ -39,7 +41,14 @@ export default async function DetailsPage({ params }: DetailsPageProps) {
         <div className={css.grid}>
           <div>
             <div className={css.imageWrap}>
-              <Image className={css.image} src={car.img} alt={`${car.brand} ${car.model}`} fill priority sizes="640px" />
+              <Image
+                className={css.image}
+                src={car.img}
+                alt={`${car.brand} ${car.model}`}
+                fill
+                priority
+                sizes="640px"
+              />
             </div>
             <RentalForm carId={car.id} />
           </div>

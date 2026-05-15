@@ -26,7 +26,7 @@
 }
 
 .link {
-  font-size: 16px;
+  font-size: var(--font-base);
   line-height: 1.25;
   transition: color 160ms ease;
 }

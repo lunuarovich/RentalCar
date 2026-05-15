@@ -19,12 +19,7 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(
-    180deg,
-    rgba(16, 24, 40, 0.1) 0%,
-    rgba(16, 24, 40, 0.55) 48%,
-    rgba(16, 24, 40, 0.84) 100%
-  );
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .content {
@@ -35,15 +30,15 @@
 
 .title {
   margin: 0 0 16px;
-  font-size: 60px;
+  font-size: var(--font-hero-title);
   line-height: 1.2;
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .text {
   margin: 0 0 40px;
-  font-size: 24px;
+  font-size: var(--font-hero-text);
   line-height: 1.33;
   font-weight: 600;
 }
@@ -57,7 +52,7 @@
   border-radius: 12px;
   background: var(--color-primary);
   color: #fff;
-  font-size: 16px;
+  font-size: var(--font-base);
   font-weight: 600;
   transition: background-color 160ms ease;
 }

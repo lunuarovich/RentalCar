@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import clsx from 'clsx';
-import Container from '@/components/Container/Container';
-import css from './Header.module.css';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import clsx from "clsx";
+import Container from "@/components/Container/Container";
+import css from "./Header.module.css";
 
 export default function Header() {
   const pathname = usePathname();
@@ -18,8 +18,21 @@ export default function Header() {
           </svg>
         </Link>
         <nav className={css.nav} aria-label="Main navigation">
-          <Link className={clsx(css.link, pathname === '/' && css.active)} href="/">Home</Link>
-          <Link className={clsx(css.link, pathname.startsWith('/catalog') && css.active)} href="/catalog">Catalog</Link>
+          <Link
+            className={clsx(css.link, pathname === "/" && css.active)}
+            href="/"
+          >
+            Home
+          </Link>
+          <Link
+            className={clsx(
+              css.link,
+              pathname.startsWith("/catalog") && css.active,
+            )}
+            href="/catalog"
+          >
+            Catalog
+          </Link>
         </nav>
       </Container>
     </header>

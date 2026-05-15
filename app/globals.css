@@ -12,6 +12,27 @@
   --color-input: #f7f7f7;
 
   --font-main: var(--font-manrope), sans-serif;
+  --font-xs: 11px;
+  --font-sm: 12px;
+  --font-base: 14px;
+  --font-md: 16px;
+  --font-lg: 18px;
+  --font-xl: 20px;
+  --font-hero-title: 42px;
+  --font-hero-text: 18px;
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --font-xs: 12px;
+    --font-sm: 14px;
+    --font-base: 16px;
+    --font-md: 18px;
+    --font-lg: 20px;
+    --font-xl: 24px;
+    --font-hero-title: 60px;
+    --font-hero-text: 24px;
+  }
 }
 
 * {

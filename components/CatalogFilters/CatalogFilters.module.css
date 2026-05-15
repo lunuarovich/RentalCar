@@ -1,7 +1,8 @@
 .form {
   display: flex;
+  flex-direction: column;
   align-items: flex-end;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 16px;
   margin-bottom: 56px;
 }
@@ -10,13 +11,13 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  min-width: 196px;
+  width: 100%;
 }
 
 .label {
   margin-bottom: 8px;
   color: var(--color-muted);
-  font-size: 12px;
+  font-size: var(--font-xs);
   line-height: 1.33;
 }
 
@@ -29,7 +30,7 @@
   color: var(--color-text);
   padding: 0 16px;
   outline: none;
-  font-size: 16px;
+  font-size: var(--font-base);
 }
 
 .input:focus {
@@ -69,7 +70,7 @@
 .select :global(.catalogSelect__placeholder) {
   margin: 0;
   color: var(--color-text);
-  font-size: 16px;
+  font-size: var(--font-base);
   line-height: 1.25;
 }
 
@@ -119,10 +120,10 @@
 }
 
 .mileageGroup {
+  width: 100%;
   border: 0;
   padding: 0;
   margin: 0;
-  min-width: 320px;
 }
 
 .mileageInputs {
@@ -142,12 +143,13 @@
 }
 
 .searchButton {
-  width: 156px;
+  width: 100%;
   height: 44px;
   border: 0;
   border-radius: 12px;
   background: var(--color-primary);
   color: #fff;
+  font-size: var(--font-base);
   font-weight: 600;
   transition: background-color 160ms ease;
 }
@@ -157,12 +159,14 @@
 }
 
 .resetButton {
+  width: 100%;
   height: 44px;
   padding: 0 16px;
   border: 1px solid var(--color-border);
   border-radius: 12px;
   background: #fff;
   color: var(--color-text);
+  font-size: var(--font-base);
   font-weight: 600;
 }
 
@@ -170,9 +174,46 @@
   border-color: var(--color-primary);
 }
 
-@media (max-width: 900px) {
+@media (min-width: 768px) {
   .form {
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
+  }
+
+  .field {
+    flex: 1 1 196px;
+    width: auto;
+  }
+
+  .mileageGroup {
+    flex: 1 1 320px;
+    width: auto;
+  }
+
+  .searchButton,
+  .resetButton {
+    width: auto;
+  }
+}
+
+@media (min-width: 1440px) {
+  .form {
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+
+  .field {
+    flex: 0 0 auto;
+    min-width: 196px;
+  }
+
+  .mileageGroup {
+    flex: 0 0 auto;
+    min-width: 320px;
+  }
+
+  .searchButton {
+    width: 156px;
   }
 }

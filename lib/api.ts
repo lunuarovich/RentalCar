@@ -24,7 +24,7 @@ export async function getBrands(): Promise<string[]> {
 }
 
 export async function bookCar(carId: string, values: RentalFormValues): Promise<void> {
-  // The Swagger screenshot in the task materials documents only read endpoints.
+  // The current public Swagger materials expose read endpoints only.
   // This request keeps the form prepared for the booking endpoint used by the checker/back-end.
   await api.post('/rentals', {
     carId,
