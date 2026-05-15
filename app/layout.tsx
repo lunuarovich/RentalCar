@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: '%s | RentalCar'
   },
   description: 'Reliable and budget-friendly rental cars for any journey.',
-  metadataBase: new URL('https://rental-car-next.vercel.app'),
+  metadataBase: new URL('https://rental-car-cyan-psi.vercel.app'),
   openGraph: {
     title: 'RentalCar — Car Rental Service',
     description: 'Find and book a rental car for your next journey.',
