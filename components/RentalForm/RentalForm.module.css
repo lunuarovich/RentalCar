@@ -42,6 +42,24 @@
   resize: none;
 }
 
+.datePickerWrap {
+  display: block;
+}
+
+.dateInput {
+  padding-right: 48px;
+}
+
+.calendarIcon {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  fill: var(--color-text);
+}
+
 .input:focus {
   box-shadow: 0 0 0 1px var(--color-primary);
 }
@@ -76,4 +94,76 @@
 
 .button:disabled {
   opacity: 0.7;
+}
+
+.datePickerWrap :global(.react-datepicker__input-container) {
+  display: block;
+}
+
+:global(.rentalCalendarPopper) {
+  z-index: 20;
+}
+
+:global(.rentalCalendar) {
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+  color: var(--color-text);
+  font-family: var(--font-main), sans-serif;
+  box-shadow: 0 4px 36px rgba(0, 0, 0, 0.08);
+}
+
+:global(.rentalCalendar .react-datepicker__header) {
+  border-bottom: 1px solid var(--color-border);
+  background: #fff;
+  padding: 16px 16px 8px;
+}
+
+:global(.rentalCalendar .react-datepicker__current-month) {
+  color: var(--color-text);
+  font-size: 16px;
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+:global(.rentalCalendar .react-datepicker__day-names) {
+  margin-top: 12px;
+}
+
+:global(.rentalCalendar .react-datepicker__day-name),
+:global(.rentalCalendar .react-datepicker__day) {
+  width: 32px;
+  line-height: 32px;
+  margin: 2px;
+  color: var(--color-text);
+  font-size: 14px;
+}
+
+:global(.rentalCalendar .react-datepicker__day-name) {
+  color: var(--color-muted);
+  font-weight: 500;
+}
+
+:global(.rentalCalendar .react-datepicker__month) {
+  margin: 8px 12px 12px;
+}
+
+:global(.rentalCalendar .react-datepicker__day:hover) {
+  border-radius: 50%;
+  background: var(--color-bg-soft);
+}
+
+:global(.rentalCalendar .react-datepicker__day--selected),
+:global(.rentalCalendar .react-datepicker__day--keyboard-selected) {
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+}
+
+:global(.rentalCalendar .react-datepicker__navigation) {
+  top: 14px;
+}
+
+:global(.rentalCalendar .react-datepicker__navigation-icon::before) {
+  border-color: var(--color-text);
 }

@@ -10,14 +10,13 @@
 }
 
 .logo {
-  font-size: 18px;
-  line-height: 1.2;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  display: inline-flex;
+  align-items: center;
 }
 
-.logo span {
-  color: var(--color-primary);
+.logoIcon {
+  width: 104px;
+  height: 16px;
 }
 
 .nav {

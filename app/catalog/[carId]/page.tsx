@@ -7,11 +7,11 @@ import { getCarById } from '@/lib/api';
 import css from './DetailsPage.module.css';
 
 interface DetailsPageProps {
-  params: { carId: string };
+  params: Promise<{ carId: string }>;
 }
 
 export async function generateMetadata({ params }: DetailsPageProps): Promise<Metadata> {
-  const { carId } = params;
+  const { carId } = await params;
   try {
     const car = await getCarById(carId);
     return {
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: DetailsPageProps): Promise<Me
 }
 
 export default async function DetailsPage({ params }: DetailsPageProps) {
-  const { carId } = params;
+  const { carId } = await params;
   const car = await getCarById(carId);
 
   return (

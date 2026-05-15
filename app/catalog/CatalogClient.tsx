@@ -72,9 +72,13 @@ export default function CatalogClient() {
 
         {cars.length > 0 && (
           <>
-            <div className={css.grid}>
-              {cars.map(car => <CarCard key={car.id} car={car} />)}
-            </div>
+            <ul className={css.grid}>
+              {cars.map(car => (
+                <li className={css.item} key={car.id}>
+                  <CarCard car={car} />
+                </li>
+              ))}
+            </ul>
             {hasNextPage && <LoadMoreButton onClick={() => fetchNextPage()} isLoading={isFetchingNextPage} />}
           </>
         )}
