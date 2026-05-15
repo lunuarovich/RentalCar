@@ -36,6 +36,5 @@ export interface CarsQueryParams {
 export interface RentalFormValues {
   name: string;
   email: string;
-  bookingDate: string;
   comment: string;
 }

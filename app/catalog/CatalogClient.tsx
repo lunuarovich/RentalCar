@@ -54,17 +54,13 @@ export default function CatalogClient() {
       }),
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages) => {
-      const loadedCars = allPages.flatMap((page) => page.cars).length;
+      const currentPage = Number(lastPage.page) || allPages.length;
 
-      if (loadedCars >= lastPage.totalCars) {
+      if (currentPage >= lastPage.totalPages) {
         return undefined;
       }
 
-      if (lastPage.cars.length < LIMIT) {
-        return undefined;
-      }
-
-      return allPages.length + 1;
+      return currentPage + 1;
     },
   });
 

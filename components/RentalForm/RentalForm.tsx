@@ -1,14 +1,6 @@
 "use client";
 
-import DatePicker from "react-datepicker";
-import {
-  Formik,
-  Form,
-  Field,
-  ErrorMessage,
-  useField,
-  useFormikContext,
-} from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import toast from "react-hot-toast";
 import { bookCar } from "@/lib/api";
@@ -18,7 +10,6 @@ import css from "./RentalForm.module.css";
 const initialValues: RentalFormValues = {
   name: "",
   email: "",
-  bookingDate: "",
   comment: "",
 };
 
@@ -31,67 +22,8 @@ const validationSchema = Yup.object({
     .trim()
     .email("Enter a valid email")
     .required("Email is required"),
-  bookingDate: Yup.string().required("Booking date is required"),
   comment: Yup.string().max(500, "Comment must be up to 500 characters"),
 });
-
-function parseBookingDate(value: string): Date | null {
-  if (!value) {
-    return null;
-  }
-
-  const [year, month, day] = value.split("-").map(Number);
-
-  if (!year || !month || !day) {
-    return null;
-  }
-
-  return new Date(year, month - 1, day);
-}
-
-function formatBookingDate(date: Date | null): string {
-  if (!date) {
-    return "";
-  }
-
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-
-  return `${year}-${month}-${day}`;
-}
-
-function BookingDatePicker() {
-  const [field, meta] = useField("bookingDate");
-  const { setFieldValue, setFieldTouched } =
-    useFormikContext<RentalFormValues>();
-
-  return (
-    <label className={css.label}>
-      <span className="visuallyHidden">Booking date</span>
-      <DatePicker
-        selected={parseBookingDate(field.value)}
-        onChange={(date: Date | null) =>
-          setFieldValue(field.name, formatBookingDate(date))
-        }
-        onBlur={() => setFieldTouched(field.name, true)}
-        dateFormat="dd.MM.yyyy"
-        placeholderText="Booking date"
-        className={`${css.input} ${css.dateInput}`}
-        wrapperClassName={css.datePickerWrap}
-        calendarClassName="rentalCalendar"
-        popperClassName="rentalCalendarPopper"
-        calendarStartDay={1}
-      />
-      <svg className={css.calendarIcon} aria-hidden="true">
-        <use href="/sprite.svg#icon-calendar" />
-      </svg>
-      {meta.touched && meta.error && (
-        <span className={css.error}>{meta.error}</span>
-      )}
-    </label>
-  );
-}
 
 export default function RentalForm({ carId }: { carId: string }) {
   return (
@@ -111,10 +43,7 @@ export default function RentalForm({ carId }: { carId: string }) {
             toast.success("Your rental request has been sent successfully!");
             helpers.resetForm();
           } catch {
-            // The current public Swagger materials expose read endpoints only.
-            // The success UX still lets the user complete the booking flow in the demo project.
-            toast.success("Your rental request has been sent successfully!");
-            helpers.resetForm();
+            toast.error("Something went wrong. Please try again later.");
           } finally {
             helpers.setSubmitting(false);
           }
@@ -150,7 +79,6 @@ export default function RentalForm({ carId }: { carId: string }) {
                 name="email"
               />
             </label>
-            <BookingDatePicker />
             <label className={css.label}>
               <span className="visuallyHidden">Comment</span>
               <Field
